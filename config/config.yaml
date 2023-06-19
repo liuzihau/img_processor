@@ -1,0 +1,43 @@
+in_root: 'C:\Users\NickLiu\Documents\tyrafos\comma3output(v1.0.3)23-06-14'
+out_root: 'C:\Users\NickLiu\Documents\tyrafos\comma3output(v1.0.3)23-06-14222'
+# ===========================
+# input data folder example
+# in_root
+#  ├── 168274601203
+#  │   ├── input_imgs.bin
+#  │   └── files.bin
+#  └── 168274632307
+# ===========================
+
+
+packaged_data: False  # packaged data means the bin accumulated several times and save together(using data collector > v1.0.3)
+have_nav: True  # openpilot add nav features to model input at 05/18/2023, if our data collect after the time, this item should be true
+
+# if you want to:
+# 1. do some process and save file
+# 2. do no process but need to un-packed the packaged data
+# ,then you need to set True on handle -> active
+handle:
+  active: False
+  unpack_only: True
+  # no need to change below naming unless openpilot change their naming
+  packaged_name:
+    image: img_inputs.bin
+    file: files.bin
+  normal_name:
+    image: input_imgs.bin
+    big_image: big_input_imgs.bin
+    features_buffer: features_buffer.bin
+    nav_features: nav_features.bin
+    traffic_convention: traffic_convention.bin
+    desire: desire.bin
+    output: output.bin
+
+# if you want to see the image after processing ( or origin image if you do no processing), set True on visualize -> active
+# if save_image == True, image will be store at out_root/save_path/timestamp.jpg
+visualize:
+  active: True
+  save_image: False
+  save_path: 'visualize'
+  show_image: True
+  show_fps: 80
